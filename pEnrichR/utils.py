@@ -24,4 +24,4 @@ def txt_to_list(txt_file):
             line = line.strip()
             if line:
                 ls.append(line)
-    return ls
+    return set(ls)
