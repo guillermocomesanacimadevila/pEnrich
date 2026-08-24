@@ -1,0 +1,26 @@
+[project]
+name = "pEnrichR"
+version = "0.1.0"
+description = "Pathway enrichment pipeline for pooled PPI"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "polars",
+    "pyenrichr",
+    "stringdb",
+    "markov_clustering",
+    "networkx",
+    "numpy",
+    "scipy",
+    "matplotlib",
+]
+
+[project.scripts]
+pEnrichR = "pEnrichR.cli:main"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["pEnrichR*"]

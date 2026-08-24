@@ -1,0 +1,8 @@
+polars
+pyenrichr
+stringdb
+markov_clustering
+networkx
+numpy
+scipy
+matplotlib
