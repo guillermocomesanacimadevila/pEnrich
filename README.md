@@ -26,6 +26,10 @@ python3.12 -m venv .venv
 Once installed, run it as a console command:
 
 ```bash
+.venv/bin/activate
+```
+
+```bash
 pEnrichR --targets_file assets/targets.txt --pheno_id AD
 ```
 
