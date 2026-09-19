@@ -30,13 +30,25 @@ Once installed, run it as a console command:
 ```
 
 ```bash
-pEnrichR --targets_file assets/targets.txt --pheno_id AD --string_score 0.4 --escore_threshold 0.15 --dscore_threshold 0.15 --add_nodes 0
+pEnrichR \
+  --targets_file assets/targets.txt \
+  --pheno_id AD \
+  --string_score 0.4 \
+  --escore_threshold 0.15 \
+  --dscore_threshold 0.15 \
+  --add_nodes 0
 ```
 
 or as a module/script without installing:
 
 ```bash
-./.venv/bin/python main.py --targets_file assets/targets.txt --pheno_id AD --string_score 0.4 --escore_threshold 0.15 --dscore_threshold 0.15 --add_nodes 0
+./.venv/bin/python main.py \
+  --targets_file assets/targets.txt \
+  --pheno_id AD \
+  --string_score 0.4 \
+  --escore_threshold 0.15 \
+  --dscore_threshold 0.15 \
+  --add_nodes 0
 ```
 
 ### Arguments
