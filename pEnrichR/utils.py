@@ -13,6 +13,10 @@ def pathway_mcl_clusters_out(pheno_id: str, out_dir: str | Path = "results") -> 
     return (Path(out_dir) / pheno_id / "mcl" / f"{pheno_id}_mcl_clusters.tsv")
 
 
+def pathway_mcl_sweep_out(pheno_id: str, out_dir: str | Path = "results") -> Path:
+    return (Path(out_dir) / pheno_id / "mcl" / f"{pheno_id}_mcl_inflation_sweep.tsv")
+
+
 def pathway_enrichr_out(pheno_id: str, cluster_id: int, library: str, out_dir: str | Path = "results") -> Path:
     return (Path(out_dir) / pheno_id / "enrichr" / f"{pheno_id}_cluster{cluster_id}_{library}.tsv")
 
@@ -25,3 +29,4 @@ def txt_to_list(txt_file):
             if line:
                 ls.append(line)
     return set(ls)
+

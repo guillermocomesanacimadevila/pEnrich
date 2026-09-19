@@ -30,23 +30,28 @@ Once installed, run it as a console command:
 ```
 
 ```bash
-pEnrichR --targets_file assets/targets.txt --pheno_id AD
+pEnrichR --targets_file assets/targets.txt --pheno_id AD --string_score 0.4 --escore_threshold 0.15 --dscore_threshold 0.15 --add_nodes 0
 ```
 
 or as a module/script without installing:
 
 ```bash
-./.venv/bin/python main.py --targets_file assets/targets.txt --pheno_id AD
+./.venv/bin/python main.py --targets_file assets/targets.txt --pheno_id AD --string_score 0.4 --escore_threshold 0.15 --dscore_threshold 0.15 --add_nodes 0
 ```
 
 ### Arguments
 
-| Argument         | Required | Default   | Description                                      |
-|------------------|----------|-----------|---------------------------------------------------|
-| `--targets_file` | yes      | —         | Path to a text file of gene symbols, one per line |
-| `--pheno_id`     | yes      | —         | Phenotype/run identifier, used to name outputs    |
-| `--string_score` | no       | `0.4`     | Minimum STRING confidence score to keep an edge   |
-| `--out_dir`      | no       | `results` | Output directory                                  |
+| Argument              | Required | Default   | Description                                                        |
+|------------------------|----------|-----------|---------------------------------------------------------------------|
+| `--targets_file`       | yes      | n/a       | Path to a text file of gene symbols, one per line                  |
+| `--pheno_id`           | yes      | n/a       | Phenotype/run identifier, used to name outputs                     |
+| `--string_score`       | no       | `0.4`     | Minimum STRING combined confidence score to keep an edge           |
+| `--escore_threshold`   | no       | `0.15`    | Minimum STRING experimental evidence score to keep an edge         |
+| `--dscore_threshold`   | no       | `0.15`    | Minimum STRING database evidence score to keep an edge             |
+| `--add_nodes`          | no       | `0`       | Number of extra 1-hop STRING neighbor genes to pull into the network, beyond `--targets_file` |
+| `--out_dir`            | no       | `results` | Output directory                                                    |
+
+An edge is kept only if it passes `--string_score` AND has either `escore` or `dscore` above threshold, i.e. it needs experimental or curated-database support, not just text-mining. Genes added via `--add_nodes` are not in `--targets_file` and may appear in downstream clusters/enrichment output alongside the original targets.
 
 ### Output
 
@@ -56,7 +61,8 @@ results/<pheno_id>/
 │   └── <pheno_id>_string_ppi_filtered.tsv
 ├── mcl/
 │   ├── <pheno_id>_mcl_clusters.png
-│   └── <pheno_id>_mcl_clusters.tsv
+│   ├── <pheno_id>_mcl_clusters.tsv
+│   └── <pheno_id>_mcl_inflation_sweep.tsv
 └── enrichr/
     ├── <pheno_id>_cluster0_GO.tsv
     ├── <pheno_id>_cluster0_KEGG.tsv

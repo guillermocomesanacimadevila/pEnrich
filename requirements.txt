@@ -1,5 +1,6 @@
 polars
 pyenrichr
+pyarrow
 stringdb
 markov_clustering
 networkx
